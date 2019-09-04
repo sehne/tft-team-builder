@@ -5,8 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "gh-pages -d dist"
   },
+  "homepage": "https://sehne.github.io/tft-team-builder",
   "dependencies": {
     "core-js": "^2.6.5",
     "gh-pages": "^2.1.1",
