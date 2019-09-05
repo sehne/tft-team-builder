@@ -94,6 +94,19 @@
         </div>
       </div>
     </div>
+
+    <h1>Popular Team Comps</h1>
+    <div v-for="(comp, index) in comps" v-bind:key="index" class="team-comp">
+      <div
+        v-for="champ in getChampionsFromComp(comp)"
+        v-bind:key="champ.name"
+        class="champion"
+        v-bind:class="{ selected: champ.selected, important: isImportant(champ) }"
+        v-on:click="toggle(champ)"
+      >
+        <img :src="champ.image" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -153,7 +166,7 @@ export default {
           image: require("./assets/Kassadin.png")
         },
         {
-          name: "khazix",
+          name: "khaZix",
           selected: false,
           cost: 1,
           traits: ["void", "assassin"],
@@ -251,7 +264,7 @@ export default {
           image: require("./assets/Pyke.png")
         },
         {
-          name: "reksai",
+          name: "rekSai",
           selected: false,
           cost: 2,
           traits: ["void", "brawler"],
@@ -384,7 +397,7 @@ export default {
           image: require("./assets/Akali.png")
         },
         {
-          name: "aurelionsol",
+          name: "aurelionSol",
           selected: false,
           cost: 4,
           traits: ["dragon", "sorcerer"],
@@ -398,7 +411,7 @@ export default {
           image: require("./assets/Brand.png")
         },
         {
-          name: "chogath",
+          name: "choGath",
           selected: false,
           cost: 4,
           traits: ["void", "brawler"],
@@ -468,7 +481,7 @@ export default {
           image: require("./assets/Kayle.png")
         },
         {
-          name: "missfortune",
+          name: "missFortune",
           selected: false,
           cost: 5,
           traits: ["pirate", "gunslinger"],
@@ -499,7 +512,6 @@ export default {
       traits: [
         { name: "demon", type: "origin", bronze: 2, silver: 4, gold: 6 },
         { name: "dragon", type: "origin", bronze: null, silver: null, gold: 2 },
-        { name: "exile", type: "origin", bronze: null, silver: null, gold: 1 },
         { name: "glacial", type: "origin", bronze: 2, silver: 4, gold: 6 },
         { name: "hextech", type: "origin", bronze: 2, silver: null, gold: 4 },
         { name: "imperial", type: "origin", bronze: 2, silver: null, gold: 4 },
@@ -513,10 +525,11 @@ export default {
           silver: null,
           gold: 2
         },
-        { name: "robot", type: "origin", bronze: null, silver: null, gold: 1 },
         { name: "void", type: "origin", bronze: null, silver: null, gold: 3 },
         { name: "wild", type: "origin", bronze: 2, silver: null, gold: 4 },
         { name: "yordle", type: "origin", bronze: 3, silver: null, gold: 6 },
+        { name: "exile", type: "origin", bronze: null, silver: null, gold: 1 },
+        { name: "robot", type: "origin", bronze: null, silver: null, gold: 1 },
 
         { name: "assassin", type: "class", bronze: 3, silver: null, gold: 6 },
         { name: "blademaster", type: "class", bronze: 3, silver: 6, gold: 9 },
@@ -546,6 +559,48 @@ export default {
           gold: 6
         },
         { name: "sorcerer", type: "class", bronze: 3, silver: null, gold: 6 }
+      ],
+      comps: [
+        [
+          "akali",
+          "kassadin",
+          "choGath",
+          "evelynn",
+          "khaZix",
+          "rengar",
+          "rekSai",
+          "pyke"
+        ],
+        [
+          "evelynn",
+          "leona",
+          "pantheon",
+          "morgana",
+          "aatrox",
+          "aurelionSol",
+          "brand",
+          "karthus"
+        ],
+        [
+          "elise",
+          "leona",
+          "pantheon",
+          "jayce",
+          "shyvana",
+          "swain",
+          "nidalee",
+          "gnar"
+        ],
+        [
+          "mordekaiser",
+          "leona",
+          "pantheon",
+          "vayne",
+          "varus",
+          "ashe",
+          "kindred",
+          "sejuani"
+        ]
       ]
     };
   },
@@ -629,6 +684,9 @@ export default {
     },
     getTeamSize() {
       return this.champions.filter(champ => champ.selected).length;
+    },
+    getChampionsFromComp(comp) {
+      return this.champions.filter(champ => comp.includes(champ.name));
     }
   }
 };
@@ -642,7 +700,8 @@ body {
   font-family: Helvetica;
 }
 #app {
-  padding: 5px 20px;
+  padding: 5px 10px;
+  margin: auto;
 }
 .champion {
   padding: 2px;
@@ -690,7 +749,12 @@ img {
 }
 
 .column {
-  flex: 50%;
+  flex: 33%;
+  max-width: 330px;
+}
+
+.team-comp {
+  padding: 5px 0;
 }
 
 .bronze {
