@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Team {{getTeamSize()}}</h1>
+    <h1>Team - {{getTeamSize()}}</h1>
     <div class="team">
       <div
         v-for="champ in getSelected()"
@@ -35,10 +35,10 @@
               v-if="getTrait(trait.name).gold"
             >{{getTrait(trait.name).gold}}&nbsp;</span>
 
-            <span v-bind:class="{oneOff: isOneOff(trait.name)}" v-if="isOneOff(trait.name)">
+            <span v-bind:class="{oneOff: isOneOff(trait.name)}">
               <arrow-up-bold-icon />
             </span>
-            <span v-bind:class="{oneUp: isOneUp(trait.name)}" v-if="isOneUp(trait.name)">
+            <span v-bind:class="{oneUp: isOneUp(trait.name)}">
               <arrow-down-bold-icon />
             </span>
           </h3>
