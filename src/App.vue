@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Team</h1>
+    <h1>Team {{getTeamSize()}}</h1>
     <div class="team">
       <div
         v-for="champ in getSelected()"
@@ -620,11 +620,15 @@ export default {
       return this.champions.filter(champ => champ.cost == cost);
     },
     isImportant(champ) {
+      if (!champ.selected) return false;
       let counter = 0;
       for (let trait of champ.traits) {
         if (this.isExacly(trait)) counter++;
       }
       return counter > 1;
+    },
+    getTeamSize() {
+      return this.champions.filter(champ => champ.selected).length;
     }
   }
 };
