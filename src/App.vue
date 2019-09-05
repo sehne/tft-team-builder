@@ -6,7 +6,7 @@
         v-for="champ in getSelected()"
         v-bind:key="champ.name"
         class="champion"
-        v-bind:class="{ selected: champ.selected }"
+        v-bind:class="{ selected: champ.selected, important: isImportant(champ) }"
         v-on:click="toggle(champ)"
       >
         <img :src="champ.image" />
@@ -39,7 +39,7 @@
             v-for="champ in getTraitChampions(trait.name)"
             v-bind:key="champ.name"
             class="champion"
-            v-bind:class="{ selected: champ.selected }"
+            v-bind:class="{ selected: champ.selected, important: isImportant(champ) }"
             v-on:click="toggle(champ)"
           >
             <img :src="champ.image" />
@@ -70,7 +70,23 @@
             v-for="champ in getTraitChampions(trait.name)"
             v-bind:key="champ.name"
             class="champion"
-            v-bind:class="{ selected: champ.selected }"
+            v-bind:class="{ selected: champ.selected, important: isImportant(champ) }"
+            v-on:click="toggle(champ)"
+          >
+            <img :src="champ.image" />
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h1>Cost</h1>
+        <div v-for="cost in [1,2,3,4,5]" v-bind:key="cost">
+          <h3>{{cost}} Gold</h3>
+          <div
+            v-for="champ in getChampionsByCost(cost)"
+            v-bind:key="champ.name"
+            class="champion"
+            v-bind:class="{ selected: champ.selected, important: isImportant(champ) }"
             v-on:click="toggle(champ)"
           >
             <img :src="champ.image" />
@@ -566,6 +582,16 @@ export default {
         trait.gold - 1 == traitCount
       );
     },
+    isExacly(traitName) {
+      let trait = this.getTrait(traitName);
+      let traitCount = this.getTraitCount(traitName);
+      if (traitCount == 0) return false;
+      return (
+        trait.bronze == traitCount ||
+        trait.silver == traitCount ||
+        trait.gold == traitCount
+      );
+    },
     getColor(traitName) {
       if (this.isGold(traitName)) return "gold";
       if (this.isSilver(traitName)) return "silver";
@@ -589,6 +615,16 @@ export default {
           (traitName == "ninja" &&
             this.getTraitCount(traitName) == this.getTrait(traitName).bronze))
       );
+    },
+    getChampionsByCost(cost) {
+      return this.champions.filter(champ => champ.cost == cost);
+    },
+    isImportant(champ) {
+      let counter = 0;
+      for (let trait of champ.traits) {
+        if (this.isExacly(trait)) counter++;
+      }
+      return counter > 1;
     }
   }
 };
@@ -615,6 +651,10 @@ body {
   background-color: white;
   filter: brightness(1);
 }
+.important {
+  background-color: gold !important;
+  filter: brightness(1);
+}
 
 h1,
 h3 {
@@ -623,6 +663,7 @@ h3 {
 
 h1 {
   font-size: 16px;
+  margin: 0 0 3px;
 }
 
 h3 {
