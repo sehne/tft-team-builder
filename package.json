@@ -12,7 +12,8 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "gh-pages": "^2.1.1",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-material-design-icons": "^3.4.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",

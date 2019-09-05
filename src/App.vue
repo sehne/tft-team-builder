@@ -6,7 +6,7 @@
         v-for="champ in getSelected()"
         v-bind:key="champ.name"
         class="champion"
-        v-bind:class="{ selected: champ.selected, important: isImportant(champ) }"
+        v-bind:class="[getChampionColor(champ)]"
         v-on:click="toggle(champ)"
       >
         <img :src="champ.image" />
@@ -33,13 +33,20 @@
             <span
               v-bind:class="{[ getColor(trait.name) ]: isGold(trait.name)}"
               v-if="getTrait(trait.name).gold"
-            >{{getTrait(trait.name).gold}}</span>
+            >{{getTrait(trait.name).gold}}&nbsp;</span>
+
+            <span v-bind:class="{oneOff: isOneOff(trait.name)}" v-if="isOneOff(trait.name)">
+              <arrow-up-bold-icon />
+            </span>
+            <span v-bind:class="{oneUp: isOneUp(trait.name)}" v-if="isOneUp(trait.name)">
+              <arrow-down-bold-icon />
+            </span>
           </h3>
           <div
             v-for="champ in getTraitChampions(trait.name)"
             v-bind:key="champ.name"
             class="champion"
-            v-bind:class="{ selected: champ.selected, important: isImportant(champ) }"
+            v-bind:class="[getChampionColor(champ)]"
             v-on:click="toggle(champ)"
           >
             <img :src="champ.image" />
@@ -64,13 +71,20 @@
             <span
               v-bind:class="{[ getColor(trait.name) ]: isGold(trait.name)}"
               v-if="getTrait(trait.name).gold"
-            >{{getTrait(trait.name).gold}}</span>
+            >{{getTrait(trait.name).gold}}&nbsp;</span>
+
+            <span v-bind:class="{oneOff: isOneOff(trait.name)}" v-if="isOneOff(trait.name)">
+              <arrow-up-bold-icon />
+            </span>
+            <span v-bind:class="{oneUp: isOneUp(trait.name)}" v-if="isOneUp(trait.name)">
+              <arrow-down-bold-icon />
+            </span>
           </h3>
           <div
             v-for="champ in getTraitChampions(trait.name)"
             v-bind:key="champ.name"
             class="champion"
-            v-bind:class="{ selected: champ.selected, important: isImportant(champ) }"
+            v-bind:class="[getChampionColor(champ)]"
             v-on:click="toggle(champ)"
           >
             <img :src="champ.image" />
@@ -86,7 +100,7 @@
             v-for="champ in getChampionsByCost(cost)"
             v-bind:key="champ.name"
             class="champion"
-            v-bind:class="{ selected: champ.selected, important: isImportant(champ) }"
+            v-bind:class="[getChampionColor(champ)]"
             v-on:click="toggle(champ)"
           >
             <img :src="champ.image" />
@@ -97,7 +111,7 @@
           v-for="champ in getChampionsByCost('item')"
           v-bind:key="champ.name"
           class="champion"
-          v-bind:class="{ selected: champ.selected, important: isImportant(champ) }"
+          v-bind:class="[getChampionColor(champ)]"
           v-on:click="toggle(champ)"
         >
           <img :src="champ.image" />
@@ -110,7 +124,7 @@
               v-for="champ in getChampionsFromComp(comp)"
               v-bind:key="champ.name"
               class="champion"
-              v-bind:class="{ selected: champ.selected, important: isImportant(champ) }"
+              v-bind:class="[getChampionColor(champ)]"
               v-on:click="toggle(champ)"
             >
               <img :src="champ.image" />
@@ -665,7 +679,8 @@ export default {
           "khaZix",
           "rengar",
           "rekSai",
-          "pyke"
+          "pyke",
+          "yomousGhostblade"
         ],
         [
           "evelynn",
@@ -727,10 +742,21 @@ export default {
     isOneOff(traitName) {
       let trait = this.getTrait(traitName);
       let traitCount = this.getTraitCount(traitName);
+      if (traitCount == 0) return false;
       return (
         trait.bronze - 1 == traitCount ||
         trait.silver - 1 == traitCount ||
         trait.gold - 1 == traitCount
+      );
+    },
+    isOneUp(traitName) {
+      let trait = this.getTrait(traitName);
+      let traitCount = this.getTraitCount(traitName);
+      if (traitCount == 0) return false;
+      return (
+        (trait.bronze && trait.bronze + 1 == traitCount) ||
+        (trait.silver && trait.silver + 1 == traitCount) ||
+        (trait.gold && trait.gold + 1 == traitCount)
       );
     },
     isExacly(traitName) {
@@ -778,6 +804,25 @@ export default {
       }
       return counter > 1;
     },
+    getChampionColor(champ) {
+      if (!champ.selected) {
+        let counter = 0;
+        for (let trait of champ.traits) {
+          if (this.isOneOff(trait)) counter++;
+        }
+        if (counter == 1) return "option";
+        if (counter > 1) return "recommended";
+        return "";
+      } else {
+        let counter = 0;
+        for (let trait of champ.traits) {
+          if (this.isExacly(trait)) counter++;
+        }
+        if (counter == 0) return "unimportant";
+        if (counter > 1) return "important";
+        return "selected";
+      }
+    },
     getTeamSize() {
       return this.champions.filter(
         champ => champ.selected && champ.cost != "item"
@@ -810,12 +855,22 @@ body {
   filter: brightness(0.5);
 }
 .selected {
-  background-color: white;
+  background-color: #c0c0c0;
   filter: brightness(1);
 }
 .important {
-  background-color: gold !important;
+  background-color: #ffd700 !important;
   filter: brightness(1);
+}
+.unimportant {
+  background-color: #804a00 !important;
+  filter: brightness(1);
+}
+.option {
+  background-color: #c0c0c044 !important;
+}
+.recommended {
+  background-color: #ffd700 !important;
 }
 
 h1,
@@ -824,13 +879,13 @@ h3 {
 }
 
 h1 {
-  font-size: 16px;
+  font-size: 18px;
   margin: 0 0 3px;
 }
 
 h3 {
   font-weight: 100;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .team {
@@ -872,8 +927,18 @@ img {
   font-weight: bold;
 }
 
-.almost {
-  color: orange;
+.oneOff {
+  color: red;
   font-weight: bold;
+}
+
+.oneUp {
+  color: red;
+  font-weight: bold;
+}
+
+.arrow-up-bold-icon,
+.arrow-down-bold-icon {
+  font-size: 16px;
 }
 </style>
