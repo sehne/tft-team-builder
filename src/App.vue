@@ -92,19 +92,31 @@
             <img :src="champ.image" />
           </div>
         </div>
-      </div>
-    </div>
+        <h3>Trait Items</h3>
+        <div
+          v-for="champ in getChampionsByCost('item')"
+          v-bind:key="champ.name"
+          class="champion"
+          v-bind:class="{ selected: champ.selected, important: isImportant(champ) }"
+          v-on:click="toggle(champ)"
+        >
+          <img :src="champ.image" />
+        </div>
 
-    <h1>Popular Team Comps</h1>
-    <div v-for="(comp, index) in comps" v-bind:key="index" class="team-comp">
-      <div
-        v-for="champ in getChampionsFromComp(comp)"
-        v-bind:key="champ.name"
-        class="champion"
-        v-bind:class="{ selected: champ.selected, important: isImportant(champ) }"
-        v-on:click="toggle(champ)"
-      >
-        <img :src="champ.image" />
+        <div class="team-comps">
+          <h1>Popular Team Comps</h1>
+          <div v-for="(comp, index) in comps" v-bind:key="index" class="team-comp">
+            <div
+              v-for="champ in getChampionsFromComp(comp)"
+              v-bind:key="champ.name"
+              class="champion"
+              v-bind:class="{ selected: champ.selected, important: isImportant(champ) }"
+              v-on:click="toggle(champ)"
+            >
+              <img :src="champ.image" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -507,6 +519,90 @@ export default {
           cost: 5,
           traits: ["exile", "blademaster"],
           image: require("./assets/Yasuo.png")
+        },
+        {
+          name: "bladeOfTheRuinedKing",
+          selected: false,
+          cost: "item",
+          traits: ["blademaster"],
+          image: require("./assets/BladeOfTheRuinedKing.png")
+        },
+        {
+          name: "bladeOfTheRuinedKing2",
+          selected: false,
+          cost: "item",
+          traits: ["blademaster"],
+          image: require("./assets/BladeOfTheRuinedKing.png")
+        },
+        {
+          name: "darkin",
+          selected: false,
+          cost: "item",
+          traits: ["demon"],
+          image: require("./assets/Darkin.png")
+        },
+        {
+          name: "darkin2",
+          selected: false,
+          cost: "item",
+          traits: ["demon"],
+          image: require("./assets/Darkin.png")
+        },
+        {
+          name: "frozenMallet",
+          selected: false,
+          cost: "item",
+          traits: ["glacial"],
+          image: require("./assets/FrozenMallet.png")
+        },
+        {
+          name: "frozenMallet2",
+          selected: false,
+          cost: "item",
+          traits: ["glacial"],
+          image: require("./assets/FrozenMallet.png")
+        },
+        {
+          name: "knightsVow",
+          selected: false,
+          cost: "item",
+          traits: ["knight"],
+          image: require("./assets/KnightsVow.png")
+        },
+        {
+          name: "knightsVow2",
+          selected: false,
+          cost: "item",
+          traits: ["knight"],
+          image: require("./assets/KnightsVow.png")
+        },
+        {
+          name: "yomousGhostblade",
+          selected: false,
+          cost: "item",
+          traits: ["assassin"],
+          image: require("./assets/YomousGhostblade.png")
+        },
+        {
+          name: "yomousGhostblade2",
+          selected: false,
+          cost: "item",
+          traits: ["assassin"],
+          image: require("./assets/YomousGhostblade.png")
+        },
+        {
+          name: "yuumi",
+          selected: false,
+          cost: "item",
+          traits: ["sorcerer"],
+          image: require("./assets/Yuumi.png")
+        },
+        {
+          name: "yuumi2",
+          selected: false,
+          cost: "item",
+          traits: ["sorcerer"],
+          image: require("./assets/Yuumi.png")
         }
       ],
       traits: [
@@ -683,7 +779,9 @@ export default {
       return counter > 1;
     },
     getTeamSize() {
-      return this.champions.filter(champ => champ.selected).length;
+      return this.champions.filter(
+        champ => champ.selected && champ.cost != "item"
+      ).length;
     },
     getChampionsFromComp(comp) {
       return this.champions.filter(champ => comp.includes(champ.name));
@@ -702,6 +800,7 @@ body {
 #app {
   padding: 5px 10px;
   margin: auto;
+  max-width: 1600px;
 }
 .champion {
   padding: 2px;
@@ -750,11 +849,14 @@ img {
 
 .column {
   flex: 33%;
-  max-width: 330px;
+  // max-width: 330px;
 }
 
-.team-comp {
-  padding: 5px 0;
+.team-comps {
+  margin-top: 30px;
+  .team-comp {
+    padding: 4px 0;
+  }
 }
 
 .bronze {
