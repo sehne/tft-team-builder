@@ -73,10 +73,10 @@
               v-if="getTrait(trait.name).gold"
             >{{getTrait(trait.name).gold}}&nbsp;</span>
 
-            <span v-bind:class="{oneOff: isOneOff(trait.name)}" v-if="isOneOff(trait.name)">
+            <span v-bind:class="{oneOff: isOneOff(trait.name)}">
               <arrow-up-bold-icon />
             </span>
-            <span v-bind:class="{oneUp: isOneUp(trait.name)}" v-if="isOneUp(trait.name)">
+            <span v-bind:class="{oneUp: isOneUp(trait.name)}">
               <arrow-down-bold-icon />
             </span>
           </h3>
@@ -133,6 +133,7 @@
         </div>
       </div>
     </div>
+    <div class="last-update">Last Update: 2019-09-06</div>
   </div>
 </template>
 
@@ -711,6 +712,48 @@ export default {
           "ashe",
           "kindred",
           "sejuani"
+        ],
+        [
+          "fiora",
+          "garen",
+          "lucian",
+          "vayne",
+          "gangplank",
+          "leona",
+          "kayle",
+          "yasuo"
+        ],
+        [
+          "sejuani",
+          "kennen",
+          "morgana",
+          "poppy",
+          "brand",
+          "lulu",
+          "anivia",
+          "karthus"
+        ],
+        ["darius", "aatrox", "katarina", "draven", "swain", "sejuani", "yasuo"],
+        [
+          "camille",
+          "lucian",
+          "shen",
+          "gangplank",
+          "draven",
+          "jinx",
+          "missFortune",
+          "yasuo",
+          "bladeOfTheRuinedKing"
+        ],
+        [
+          "kassadin",
+          "rekSai",
+          "aurelionSol",
+          "choGath",
+          "kindred",
+          "leona",
+          "karthus",
+          "pantheon"
         ]
       ]
     };
@@ -940,5 +983,10 @@ img {
 .arrow-up-bold-icon,
 .arrow-down-bold-icon {
   font-size: 16px;
+}
+
+.last-update {
+  margin-top: 20px;
+  font-size: 12px;
 }
 </style>
