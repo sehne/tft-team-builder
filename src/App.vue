@@ -743,87 +743,25 @@ export default {
       ],
       comps: [
         [
-          "akali",
-          "kassadin",
-          "choGath",
-          "evelynn",
-          "khaZix",
-          "rengar",
-          "rekSai",
-          "pyke",
-          "yomousGhostblade"
-        ],
-        [
-          "evelynn",
-          "leona",
-          "pantheon",
-          "morgana",
-          "aatrox",
-          "aurelionSol",
-          "brand",
-          "karthus"
-        ],
-        [
-          "elise",
-          "leona",
-          "pantheon",
-          "jayce",
-          "shyvana",
-          "swain",
-          "nidalee",
-          "gnar"
-        ],
-        [
+          "darius",
           "mordekaiser",
-          "leona",
-          "pantheon",
-          "vayne",
-          "varus",
-          "ashe",
-          "kindred",
-          "sejuani"
-        ],
-        [
-          "fiora",
-          "garen",
-          "lucian",
-          "vayne",
-          "gangplank",
-          "leona",
-          "kayle",
-          "yasuo"
-        ],
-        [
-          "sejuani",
-          "kennen",
-          "morgana",
           "poppy",
-          "brand",
-          "lulu",
-          "anivia",
-          "karthus"
-        ],
-        ["darius", "aatrox", "katarina", "draven", "swain", "sejuani", "yasuo"],
-        [
-          "camille",
-          "lucian",
-          "shen",
-          "gangplank",
+          "katarina",
           "draven",
-          "jinx",
-          "missFortune",
-          "yasuo",
-          "bladeOfTheRuinedKing"
+          "sejuani",
+          "swain",
+          "darkin"
         ],
         [
-          "kassadin",
-          "rekSai",
+          "ahri",
+          "lulu",
+          "poppy",
+          "shyvana",
+          "gnar",
           "aurelionSol",
-          "choGath",
-          "kindred",
-          "leona",
-          "karthus",
-          "pantheon"
+          "sejuani",
+          "swain",
+          "darkin"
         ]
       ]
     };
