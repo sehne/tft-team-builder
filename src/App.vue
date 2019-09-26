@@ -133,7 +133,7 @@
         </div>
       </div>
     </div>
-    <div class="last-update">Last Update: 2019-09-06</div>
+    <div class="last-update">Last Update: 2019-09-26</div>
   </div>
 </template>
 
@@ -494,6 +494,13 @@ export default {
           image: require("./assets/Anivia.png")
         },
         {
+          name: "kaiSa",
+          selected: false,
+          cost: 5,
+          traits: ["void", "assassin", "ranger"],
+          image: require("./assets/KaiSa.png")
+        },
+        {
           name: "karthus",
           selected: false,
           cost: 5,
@@ -550,6 +557,13 @@ export default {
           image: require("./assets/BladeOfTheRuinedKing.png")
         },
         {
+          name: "bladeOfTheRuinedKing3",
+          selected: false,
+          cost: "item",
+          traits: ["blademaster"],
+          image: require("./assets/BladeOfTheRuinedKing.png")
+        },
+        {
           name: "darkin",
           selected: false,
           cost: "item",
@@ -558,6 +572,13 @@ export default {
         },
         {
           name: "darkin2",
+          selected: false,
+          cost: "item",
+          traits: ["demon"],
+          image: require("./assets/Darkin.png")
+        },
+        {
+          name: "darkin3",
           selected: false,
           cost: "item",
           traits: ["demon"],
@@ -578,6 +599,13 @@ export default {
           image: require("./assets/FrozenMallet.png")
         },
         {
+          name: "frozenMallet3",
+          selected: false,
+          cost: "item",
+          traits: ["glacial"],
+          image: require("./assets/FrozenMallet.png")
+        },
+        {
           name: "knightsVow",
           selected: false,
           cost: "item",
@@ -586,6 +614,13 @@ export default {
         },
         {
           name: "knightsVow2",
+          selected: false,
+          cost: "item",
+          traits: ["knight"],
+          image: require("./assets/KnightsVow.png")
+        },
+        {
+          name: "knightsVow3",
           selected: false,
           cost: "item",
           traits: ["knight"],
@@ -606,6 +641,13 @@ export default {
           image: require("./assets/YomousGhostblade.png")
         },
         {
+          name: "yomousGhostblade3",
+          selected: false,
+          cost: "item",
+          traits: ["assassin"],
+          image: require("./assets/YomousGhostblade.png")
+        },
+        {
           name: "yuumi",
           selected: false,
           cost: "item",
@@ -618,6 +660,34 @@ export default {
           cost: "item",
           traits: ["sorcerer"],
           image: require("./assets/Yuumi.png")
+        },
+        {
+          name: "yuumi3",
+          selected: false,
+          cost: "item",
+          traits: ["sorcerer"],
+          image: require("./assets/Yuumi.png")
+        },
+        {
+          name: "sparringGloves",
+          selected: false,
+          cost: "item",
+          traits: ["yordle"],
+          image: require("./assets/SparringGloves.png")
+        },
+        {
+          name: "sparringGloves2",
+          selected: false,
+          cost: "item",
+          traits: ["yordle"],
+          image: require("./assets/SparringGloves.png")
+        },
+        {
+          name: "sparringGloves3",
+          selected: false,
+          cost: "item",
+          traits: ["yordle"],
+          image: require("./assets/SparringGloves.png")
         }
       ],
       traits: [
@@ -636,13 +706,13 @@ export default {
           silver: null,
           gold: 2
         },
-        { name: "void", type: "origin", bronze: null, silver: null, gold: 3 },
+        { name: "void", type: "origin", bronze: 2, silver: null, gold: 4 },
         { name: "wild", type: "origin", bronze: 2, silver: null, gold: 4 },
-        { name: "yordle", type: "origin", bronze: 3, silver: null, gold: 6 },
+        { name: "yordle", type: "origin", bronze: 3, silver: 6, gold: 9 },
         { name: "exile", type: "origin", bronze: null, silver: null, gold: 1 },
         { name: "robot", type: "origin", bronze: null, silver: null, gold: 1 },
 
-        { name: "assassin", type: "class", bronze: 3, silver: null, gold: 6 },
+        { name: "assassin", type: "class", bronze: 3, silver: 6, gold: 9 },
         { name: "blademaster", type: "class", bronze: 3, silver: 6, gold: 9 },
         { name: "brawler", type: "class", bronze: 2, silver: 4, gold: 6 },
         {
