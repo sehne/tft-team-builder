@@ -669,25 +669,25 @@ export default {
           image: require("./assets/Yuumi.png")
         },
         {
-          name: "sparringGloves",
+          name: "mittens",
           selected: false,
           cost: "item",
           traits: ["yordle"],
-          image: require("./assets/SparringGloves.png")
+          image: require("./assets/Mittens.png")
         },
         {
-          name: "sparringGloves2",
+          name: "mittens2",
           selected: false,
           cost: "item",
           traits: ["yordle"],
-          image: require("./assets/SparringGloves.png")
+          image: require("./assets/Mittens.png")
         },
         {
-          name: "sparringGloves3",
+          name: "mittens3",
           selected: false,
           cost: "item",
           traits: ["yordle"],
-          image: require("./assets/SparringGloves.png")
+          image: require("./assets/Mittens.png")
         }
       ],
       traits: [
@@ -762,6 +762,16 @@ export default {
           "sejuani",
           "swain",
           "darkin"
+        ],
+        [
+          "nidalee",
+          "gnar",
+          "rengar",
+          "warwick",
+          "jayce",
+          "akali",
+          "pyke",
+          "vi",
         ]
       ]
     };
