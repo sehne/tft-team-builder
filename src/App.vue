@@ -1,5 +1,18 @@
 <template>
   <div id="app">
+    <div class="tab">
+      <button
+        class="tablinks"
+        @click="switchTab('list')"
+        v-bind:class="{active : currentTab == 'list' }"
+      >List</button>
+      <button
+        class="tablinks"
+        @click="switchTab('table')"
+        v-bind:class="{active : currentTab == 'table' }"
+      >Table</button>
+    </div>
+
     <h1>Team - {{getTeamSize()}}</h1>
     <div class="team">
       <div
@@ -13,115 +26,38 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="column">
-        <h1>Origins</h1>
+    <div id="list" v-if="currentTab == 'list'">
+      <div class="row">
+        <div class="column">
+          <h1>Origins</h1>
 
-        <div v-for="trait in getOrigins()" v-bind:key="trait.name">
-          <h3>
-            <span
-              v-bind:class="[ getColor(trait.name) ]"
-            >{{trait.name}} {{getTraitCount(trait.name)}}</span> /
-            <span
-              v-bind:class="{[ getColor(trait.name) ]: isBronze(trait.name)}"
-              v-if="getTrait(trait.name).bronze"
-            >{{getTrait(trait.name).bronze}} -&nbsp;</span>
-            <span
-              v-bind:class="{[ getColor(trait.name) ]: isSilver(trait.name)}"
-              v-if="getTrait(trait.name).silver"
-            >{{getTrait(trait.name).silver}} -&nbsp;</span>
-            <span
-              v-bind:class="{[ getColor(trait.name) ]: isGold(trait.name)}"
-              v-if="getTrait(trait.name).gold"
-            >{{getTrait(trait.name).gold}}&nbsp;</span>
+          <div v-for="trait in getOrigins()" v-bind:key="trait.name">
+            <h3>
+              <span
+                v-bind:class="[ getColor(trait.name) ]"
+              >{{trait.name}} {{getTraitCount(trait.name)}}</span> /
+              <span
+                v-bind:class="{[ getColor(trait.name) ]: isBronze(trait.name)}"
+                v-if="getTrait(trait.name).bronze"
+              >{{getTrait(trait.name).bronze}} -&nbsp;</span>
+              <span
+                v-bind:class="{[ getColor(trait.name) ]: isSilver(trait.name)}"
+                v-if="getTrait(trait.name).silver"
+              >{{getTrait(trait.name).silver}} -&nbsp;</span>
+              <span
+                v-bind:class="{[ getColor(trait.name) ]: isGold(trait.name)}"
+                v-if="getTrait(trait.name).gold"
+              >{{getTrait(trait.name).gold}}&nbsp;</span>
 
-            <span v-bind:class="{oneOff: isOneOff(trait.name)}">
-              <arrow-up-bold-icon />
-            </span>
-            <span v-bind:class="{oneUp: isOneUp(trait.name)}">
-              <arrow-down-bold-icon />
-            </span>
-          </h3>
-          <div
-            v-for="champ in getTraitChampions(trait.name)"
-            v-bind:key="champ.name"
-            class="champion"
-            v-bind:class="[getChampionColor(champ)]"
-            v-on:click="toggle(champ)"
-          >
-            <img :src="champ.image" />
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <h1>Classes</h1>
-        <div v-for="trait in getClasses()" v-bind:key="trait.name">
-          <h3>
-            <span
-              v-bind:class="[ getColor(trait.name) ]"
-            >{{trait.name}} {{getTraitCount(trait.name)}}</span> /
-            <span
-              v-bind:class="{[ getColor(trait.name) ]: isBronze(trait.name)}"
-              v-if="getTrait(trait.name).bronze"
-            >{{getTrait(trait.name).bronze}} -&nbsp;</span>
-            <span
-              v-bind:class="{[ getColor(trait.name) ]: isSilver(trait.name)}"
-              v-if="getTrait(trait.name).silver"
-            >{{getTrait(trait.name).silver}} -&nbsp;</span>
-            <span
-              v-bind:class="{[ getColor(trait.name) ]: isGold(trait.name)}"
-              v-if="getTrait(trait.name).gold"
-            >{{getTrait(trait.name).gold}}&nbsp;</span>
-
-            <span v-bind:class="{oneOff: isOneOff(trait.name)}">
-              <arrow-up-bold-icon />
-            </span>
-            <span v-bind:class="{oneUp: isOneUp(trait.name)}">
-              <arrow-down-bold-icon />
-            </span>
-          </h3>
-          <div
-            v-for="champ in getTraitChampions(trait.name)"
-            v-bind:key="champ.name"
-            class="champion"
-            v-bind:class="[getChampionColor(champ)]"
-            v-on:click="toggle(champ)"
-          >
-            <img :src="champ.image" />
-          </div>
-        </div>
-      </div>
-
-      <div class="column">
-        <h1>Cost</h1>
-        <div v-for="cost in [1,2,3,4,5]" v-bind:key="cost">
-          <h3>{{cost}} Gold</h3>
-          <div
-            v-for="champ in getChampionsByCost(cost)"
-            v-bind:key="champ.name"
-            class="champion"
-            v-bind:class="[getChampionColor(champ)]"
-            v-on:click="toggle(champ)"
-          >
-            <img :src="champ.image" />
-          </div>
-        </div>
-        <h3>Trait Items</h3>
-        <div
-          v-for="champ in getChampionsByCost('item')"
-          v-bind:key="champ.name"
-          class="champion"
-          v-bind:class="[getChampionColor(champ)]"
-          v-on:click="toggle(champ)"
-        >
-          <img :src="champ.image" />
-        </div>
-
-        <div class="team-comps">
-          <h1>Popular Team Comps</h1>
-          <div v-for="(comp, index) in comps" v-bind:key="index" class="team-comp">
+              <span v-bind:class="{oneOff: isOneOff(trait.name)}">
+                <arrow-up-bold-icon />
+              </span>
+              <span v-bind:class="{oneUp: isOneUp(trait.name)}">
+                <arrow-down-bold-icon />
+              </span>
+            </h3>
             <div
-              v-for="champ in getChampionsFromComp(comp)"
+              v-for="champ in getTraitChampions(trait.name)"
               v-bind:key="champ.name"
               class="champion"
               v-bind:class="[getChampionColor(champ)]"
@@ -131,8 +67,106 @@
             </div>
           </div>
         </div>
+        <div class="column">
+          <h1>Classes</h1>
+          <div v-for="trait in getClasses()" v-bind:key="trait.name">
+            <h3>
+              <span
+                v-bind:class="[ getColor(trait.name) ]"
+              >{{trait.name}} {{getTraitCount(trait.name)}}</span> /
+              <span
+                v-bind:class="{[ getColor(trait.name) ]: isBronze(trait.name)}"
+                v-if="getTrait(trait.name).bronze"
+              >{{getTrait(trait.name).bronze}} -&nbsp;</span>
+              <span
+                v-bind:class="{[ getColor(trait.name) ]: isSilver(trait.name)}"
+                v-if="getTrait(trait.name).silver"
+              >{{getTrait(trait.name).silver}} -&nbsp;</span>
+              <span
+                v-bind:class="{[ getColor(trait.name) ]: isGold(trait.name)}"
+                v-if="getTrait(trait.name).gold"
+              >{{getTrait(trait.name).gold}}&nbsp;</span>
+
+              <span v-bind:class="{oneOff: isOneOff(trait.name)}">
+                <arrow-up-bold-icon />
+              </span>
+              <span v-bind:class="{oneUp: isOneUp(trait.name)}">
+                <arrow-down-bold-icon />
+              </span>
+            </h3>
+            <div
+              v-for="champ in getTraitChampions(trait.name)"
+              v-bind:key="champ.name"
+              class="champion"
+              v-bind:class="[getChampionColor(champ)]"
+              v-on:click="toggle(champ)"
+            >
+              <img :src="champ.image" />
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <h1>Cost</h1>
+          <div v-for="cost in [1,2,3,4,5]" v-bind:key="cost">
+            <h3>{{cost}} Gold</h3>
+            <div
+              v-for="champ in getChampionsByCost(cost)"
+              v-bind:key="champ.name"
+              class="champion"
+              v-bind:class="[getChampionColor(champ)]"
+              v-on:click="toggle(champ)"
+            >
+              <img :src="champ.image" />
+            </div>
+          </div>
+          <h3>Trait Items</h3>
+          <div
+            v-for="champ in getChampionsByCost('item')"
+            v-bind:key="champ.name"
+            class="champion"
+            v-bind:class="[getChampionColor(champ)]"
+            v-on:click="toggle(champ)"
+          >
+            <img :src="champ.image" />
+          </div>
+
+          <div class="team-comps">
+            <h1>Popular Team Comps</h1>
+            <div v-for="(comp, index) in comps" v-bind:key="index" class="team-comp">
+              <div
+                v-for="champ in getChampionsFromComp(comp)"
+                v-bind:key="champ.name"
+                class="champion"
+                v-bind:class="[getChampionColor(champ)]"
+                v-on:click="toggle(champ)"
+              >
+                <img :src="champ.image" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div id="table" v-if="currentTab == 'table'">
+      <table>
+        <tr v-for="origin in getOrigins()" v-bind:key="origin.name">
+          <th v-for="trait in getClasses()" v-bind:key="trait.name">
+            <div
+              v-for="champ in getMultipleTraitChampions([origin.name, trait.name])"
+              v-bind:key="champ.name"
+              class="champion"
+              v-bind:class="[getChampionColor(champ)]"
+              v-on:click="toggle(champ)"
+            >
+              <img :src="champ.image" />
+            </div>
+          </th>
+        </tr>
+      </table>
+    </div>
+
     <div class="last-update">Last Update: 2019-09-26</div>
   </div>
 </template>
@@ -142,6 +176,7 @@ export default {
   name: "app",
   data() {
     return {
+      currentTab: "list",
       champions: [
         {
           name: "camille",
@@ -763,20 +798,14 @@ export default {
           "swain",
           "darkin"
         ],
-        [
-          "nidalee",
-          "gnar",
-          "rengar",
-          "warwick",
-          "jayce",
-          "akali",
-          "pyke",
-          "vi",
-        ]
+        ["nidalee", "gnar", "rengar", "warwick", "jayce", "akali", "pyke", "vi"]
       ]
     };
   },
   methods: {
+    switchTab(tab) {
+      this.currentTab = tab;
+    },
     toggle(champ) {
       champ.selected = !champ.selected;
     },
@@ -784,6 +813,7 @@ export default {
       return this.champions.filter(champ => champ.selected);
     },
     getOrigins() {
+      console.log(this.traits.filter(trait => trait.type == "origin"));
       return this.traits.filter(trait => trait.type == "origin");
     },
     getClasses() {
@@ -794,6 +824,19 @@ export default {
     },
     getTraitChampions(traitName) {
       return this.champions.filter(champ => champ.traits.includes(traitName));
+    },
+    getMultipleTraitChampions(traitNames) {
+      console.log("hi");
+      console.log(traitNames);
+      console.log(
+        traitNames,
+        this.champions.filter(champ =>
+          traitNames.every(trait => champ.traits.includes(trait))
+        )
+      );
+      return this.champions.filter(champ =>
+        traitNames.every(trait => champ.traits.includes(trait))
+      );
     },
     getTraitCount(traitName) {
       return this.champions.filter(
@@ -1006,5 +1049,43 @@ img {
 .last-update {
   margin-top: 20px;
   font-size: 12px;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  // background-color: #f1f1f1;
+  padding-bottom: 5px;
+}
+
+/* Style the buttons inside the tab */
+.tablinks {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid transparent;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #dddddd88;
+}
+
+/* Create an active/current tablink class */
+.tablinks.active {
+  color: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid #ccc;
+}
+
+// Table style
+
+th {
+  outline: 1px solid rgba(255, 255, 255, 0.5);
 }
 </style>
