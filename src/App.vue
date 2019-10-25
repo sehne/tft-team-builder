@@ -151,23 +151,27 @@
 
     <div id="table" v-if="currentTab == 'table'">
       <table>
-        <tr v-for="origin in getOrigins()" v-bind:key="origin.name">
-          <th v-for="trait in getClasses()" v-bind:key="trait.name">
-            <div
-              v-for="champ in getMultipleTraitChampions([origin.name, trait.name])"
-              v-bind:key="champ.name"
-              class="champion"
-              v-bind:class="[getChampionColor(champ)]"
-              v-on:click="toggle(champ)"
-            >
-              <img :src="champ.image" />
+        <tr v-for="origin in [0, ...getOrigins()]" v-bind:key="origin.name">
+          <th v-for="trait in [0, ...getClasses()]" v-bind:key="trait.name">
+            <div v-if="origin == 0 && trait != 0" class="table-header-top">{{trait.name}}</div>
+            <div v-if="trait == 0 && origin != 0">{{origin.name}}</div>
+            <div v-if="origin != 0 && trait != 0">
+              <div
+                v-for="champ in getMultipleTraitChampions([origin.name, trait.name])"
+                v-bind:key="champ.name"
+                class="champion"
+                v-bind:class="[getChampionColor(champ)]"
+                v-on:click="toggle(champ)"
+              >
+                <img :src="champ.image" />
+              </div>
             </div>
           </th>
         </tr>
       </table>
     </div>
 
-    <div class="last-update">Last Update: 2019-09-26</div>
+    <div class="last-update">Last Update: 2019-10-25</div>
   </div>
 </template>
 
@@ -1074,7 +1078,7 @@ img {
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #dddddd88;
+  background-color: rgba(223, 223, 223, 0.5);
 }
 
 /* Create an active/current tablink class */
