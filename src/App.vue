@@ -308,6 +308,9 @@ body {
 .set-select:hover {
   background-color: rgba(223, 223, 223, 0.2);
 }
+.set-select:focus {
+  outline: none;
+}
 
 .champion {
   padding: 2px;
