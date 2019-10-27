@@ -4,7 +4,7 @@ let set = {
             name: "ivern",
             selected: false,
             cost: 1,
-            traits: ["forest", "druid"],
+            traits: ["woodland", "druid"],
             image: require("../assets/set2/Ivern.png")
         },
         {
@@ -18,7 +18,7 @@ let set = {
             name: "maokai",
             selected: false,
             cost: 1,
-            traits: ["forest", "druid"],
+            traits: ["woodland", "druid"],
             image: require("../assets/set2/Maokai.png")
         },
         {
@@ -102,7 +102,7 @@ let set = {
             name: "leBlanc",
             selected: false,
             cost: 2,
-            traits: ["forest", "mage", "assassin"],
+            traits: ["woodland", "mage", "assassin"],
             image: require("../assets/set2/LeBlanc.png")
         },
         {
@@ -116,7 +116,7 @@ let set = {
             name: "neeko",
             selected: false,
             cost: 2,
-            traits: ["forest", "druid"],
+            traits: ["woodland", "druid"],
             image: require("../assets/set2/Neeko.png")
         },
         {
@@ -158,7 +158,7 @@ let set = {
             name: "volibear",
             selected: false,
             cost: 2,
-            traits: ["glacial", "electric", "berserk"],
+            traits: ["glacial", "electric", "berserker"],
             image: require("../assets/set2/Volibear.png")
         },
         {
@@ -218,10 +218,10 @@ let set = {
             image: require("../assets/set2/Nocturne.png")
         },
         {
-            name: "qiyanaForest",
+            name: "qiyanaWoodland",
             selected: false,
             cost: 3,
-            traits: ["forest", "assassin"],
+            traits: ["woodland", "assassin"],
             image: require("../assets/set2/Qiyana.png")
         },
         {
@@ -386,10 +386,10 @@ let set = {
             image: require("../assets/set2/Lux.png")
         },
         {
-            name: "luxForest",
+            name: "luxWoodland",
             selected: false,
             cost: 7,
-            traits: ["forest", "avatar"],
+            traits: ["woodland", "avatar"],
             image: require("../assets/set2/Lux.png")
         },
         {
@@ -615,7 +615,7 @@ let set = {
         { name: "crystal", type: "origin", bronze: 2, silver: null, gold: 4 },
         { name: "desert", type: "origin", bronze: 2, silver: null, gold: 4 },
         { name: "electric", type: "origin", bronze: 2, silver: 3, gold: 4 },
-        { name: "forest", type: "origin", bronze: null, silver: null, gold: 3 },
+        { name: "woodland", type: "origin", bronze: null, silver: null, gold: 3 },
         { name: "glacial", type: "origin", bronze: 2, silver: 4, gold: 6 },
         { name: "inferno", type: "origin", bronze: 3, silver: 6, gold: 9 },
         { name: "light", type: "origin", bronze: 3, silver: 6, gold: 9 },

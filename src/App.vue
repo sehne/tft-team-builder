@@ -272,6 +272,9 @@ body {
   padding: 0 10px;
   color: rgba(255, 255, 255, 0.8);
   font-weight: bold;
+  @media (max-width: 700px) {
+    display: none;
+  }
 }
 
 /* Style tabs */
@@ -287,6 +290,10 @@ body {
   font-size: 17px;
   color: rgba(255, 255, 255, 0.5);
   border-bottom: 2px solid transparent;
+
+  @media (max-width: 700px) {
+    width: initial;
+  }
 }
 
 /* Change background color of buttons on hover */
@@ -385,6 +392,9 @@ img {
 
 .row {
   display: flex;
+  @media (max-width: 600px) {
+    display: block;
+  }
 }
 
 .column {
