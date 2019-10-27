@@ -324,9 +324,9 @@ body {
 .champion {
   padding: 2px;
   margin: 2px 2px;
-  border-radius: 50px;
   display: inline-flex;
   filter: brightness(0.5);
+  border-radius: 50%;
 }
 
 .image-wrapper {
@@ -379,9 +379,8 @@ h3 {
 }
 
 img {
-  height: 32px;
-  width: 32px;
-  border-radius: 50%;
+  height: 36px;
+  width: 36px;
 }
 
 .row {
