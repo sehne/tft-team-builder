@@ -218,10 +218,31 @@ let set = {
             image: require("../assets/set2/Nocturne.png")
         },
         {
-            name: "qiyana",
+            name: "qiyanaForest",
+            selected: false,
+            cost: 3,
+            traits: ["forest", "assassin"],
+            image: require("../assets/set2/Qiyana.png")
+        },
+        {
+            name: "qiyanaInferno",
             selected: false,
             cost: 3,
             traits: ["inferno", "assassin"],
+            image: require("../assets/set2/Qiyana.png")
+        },
+        {
+            name: "qiyanaOcean",
+            selected: false,
+            cost: 3,
+            traits: ["ocean", "assassin"],
+            image: require("../assets/set2/Qiyana.png")
+        },
+        {
+            name: "qiyanaWind",
+            selected: false,
+            cost: 3,
+            traits: ["wind", "assassin"],
             image: require("../assets/set2/Qiyana.png")
         },
         {
@@ -351,10 +372,73 @@ let set = {
             image: require("../assets/set2/Zed.png")
         },
         {
-            name: "lux",
+            name: "luxCrystal",
             selected: false,
             cost: 7,
-            traits: ["avatar"],
+            traits: ["crystal", "avatar"],
+            image: require("../assets/set2/Lux.png")
+        },
+        {
+            name: "luxElectric",
+            selected: false,
+            cost: 7,
+            traits: ["electric", "avatar"],
+            image: require("../assets/set2/Lux.png")
+        },
+        {
+            name: "luxForest",
+            selected: false,
+            cost: 7,
+            traits: ["forest", "avatar"],
+            image: require("../assets/set2/Lux.png")
+        },
+        {
+            name: "luxGlacial",
+            selected: false,
+            cost: 7,
+            traits: ["glacial", "avatar"],
+            image: require("../assets/set2/Lux.png")
+        },
+        {
+            name: "luxInferno",
+            selected: false,
+            cost: 7,
+            traits: ["inferno", "avatar"],
+            image: require("../assets/set2/Lux.png")
+        },
+        {
+            name: "luxLight",
+            selected: false,
+            cost: 7,
+            traits: ["light", "avatar"],
+            image: require("../assets/set2/Lux.png")
+        },
+        {
+            name: "luxOcean",
+            selected: false,
+            cost: 7,
+            traits: ["ocean", "avatar"],
+            image: require("../assets/set2/Lux.png")
+        },
+        {
+            name: "luxShadow",
+            selected: false,
+            cost: 7,
+            traits: ["shadow", "avatar"],
+            image: require("../assets/set2/Lux.png")
+        },
+        {
+            name: "luxSteel",
+            selected: false,
+            cost: 7,
+            traits: ["steel", "avatar"],
+            image: require("../assets/set2/Lux.png")
+        },
+        {
+            name: "luxWind",
+            selected: false,
+            cost: 7,
+            traits: ["wind", "avatar"],
             image: require("../assets/set2/Lux.png")
         },
         {

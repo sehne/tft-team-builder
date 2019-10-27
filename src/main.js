@@ -15,7 +15,7 @@ Vue.mixin({
   data() {
     return {
       currentTab: "list",
-      currentSet: "set1",
+      currentSet: "set2",
       set1: set1.set,
       set2: set2.set
     };
@@ -48,9 +48,10 @@ Vue.mixin({
       );
     },
     getTraitCount(traitName) {
-      return this[this.currentSet].champions.filter(
+      let traitChamps = this[this.currentSet].champions.filter(
         champ => champ.traits.includes(traitName) && champ.selected
-      ).length;
+      );
+      return traitChamps.length + (traitName != 'avatar' ? traitChamps.filter(champ => champ.traits.includes('avatar')).length : 0);
     },
     isOneOff(traitName) {
       let trait = this.getTrait(traitName);

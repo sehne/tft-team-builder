@@ -151,7 +151,7 @@
               </div>
             </div>
 
-            <div class="team-comps">
+            <div class="team-comps" v-if="getComps().lenght">
               <h1>Popular Team Comps</h1>
               <div v-for="(comp, index) in getComps()" v-bind:key="index" class="team-comp">
                 <div
@@ -331,7 +331,6 @@ body {
 
 .image-wrapper {
   width: 32px;
-  max-width: 32px;
   height: 32px;
   overflow: hidden;
   display: flex;
@@ -381,6 +380,7 @@ h3 {
 img {
   height: 36px;
   width: 36px;
+  min-width: 36px;
 }
 
 .row {
