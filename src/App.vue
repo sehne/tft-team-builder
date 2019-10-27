@@ -32,7 +32,9 @@
           v-bind:class="[getChampionColor(champ)]"
           v-on:click="toggle(champ)"
         >
-          <img :src="champ.image" />
+          <div class="image-wrapper">
+            <img :src="champ.image" />
+          </div>
         </div>
       </div>
 
@@ -73,7 +75,9 @@
                 v-bind:class="[getChampionColor(champ)]"
                 v-on:click="toggle(champ)"
               >
-                <img :src="champ.image" />
+                <div class="image-wrapper">
+                  <img :src="champ.image" />
+                </div>
               </div>
             </div>
           </div>
@@ -111,7 +115,9 @@
                 v-bind:class="[getChampionColor(champ)]"
                 v-on:click="toggle(champ)"
               >
-                <img :src="champ.image" />
+                <div class="image-wrapper">
+                  <img :src="champ.image" />
+                </div>
               </div>
             </div>
           </div>
@@ -127,7 +133,9 @@
                 v-bind:class="[getChampionColor(champ)]"
                 v-on:click="toggle(champ)"
               >
-                <img :src="champ.image" />
+                <div class="image-wrapper">
+                  <img :src="champ.image" />
+                </div>
               </div>
             </div>
             <h3>Trait Items</h3>
@@ -138,12 +146,14 @@
               v-bind:class="[getChampionColor(champ)]"
               v-on:click="toggle(champ)"
             >
-              <img :src="champ.image" />
+              <div class="image-wrapper">
+                <img :src="champ.image" />
+              </div>
             </div>
 
             <div class="team-comps">
               <h1>Popular Team Comps</h1>
-              <div v-for="(comp, index) in comps" v-bind:key="index" class="team-comp">
+              <div v-for="(comp, index) in getComps()" v-bind:key="index" class="team-comp">
                 <div
                   v-for="champ in getChampionsFromComp(comp)"
                   v-bind:key="champ.name"
@@ -151,7 +161,9 @@
                   v-bind:class="[getChampionColor(champ)]"
                   v-on:click="toggle(champ)"
                 >
-                  <img :src="champ.image" />
+                  <div class="image-wrapper">
+                    <img :src="champ.image" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -209,7 +221,9 @@
                   v-bind:class="[getChampionColor(champ)]"
                   v-on:click="toggle(champ)"
                 >
-                  <img :src="champ.image" />
+                  <div class="image-wrapper">
+                    <img :src="champ.image" />
+                  </div>
                 </div>
               </div>
             </th>
@@ -297,13 +311,8 @@ body {
   padding-left: 5px;
   margin-right: 10px;
   option {
-    // background-color: blue;
     color: black;
   }
-  // option:focus {
-  //   background-color: red;
-  //   color: rgba(255, 255, 255, 0.8);
-  // }
 }
 .set-select:hover {
   background-color: rgba(223, 223, 223, 0.2);
@@ -319,6 +328,18 @@ body {
   display: inline-flex;
   filter: brightness(0.5);
 }
+
+.image-wrapper {
+  width: 32px;
+  max-width: 32px;
+  height: 32px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
 .selected {
   background-color: #c0c0c0;
   filter: brightness(1);
@@ -369,7 +390,6 @@ img {
 
 .column {
   flex: 33%;
-  // max-width: 330px;
 }
 
 .team-comps {
