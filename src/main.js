@@ -110,6 +110,9 @@ Vue.mixin({
     getChampionsByCost(cost) {
       return this[this.currentSet].champions.filter(champ => champ.cost == cost);
     },
+    getChampionsByCostLength(cost) {
+      return this[this.currentSet].champions.filter(champ => champ.cost == cost).length;
+    },
     isImportant(champ) {
       if (!champ.selected) return false;
       let counter = 0;
@@ -141,6 +144,9 @@ Vue.mixin({
       return this[this.currentSet].champions.filter(
         champ => champ.selected && champ.cost != "item"
       ).length;
+    },
+    getTraitItems(trait) {
+      return this[this.currentSet].champions.filter(champ => champ.cost == 'item' && champ.traits.includes(trait));
     },
     getChampionsFromComp(comp) {
       return this[this.currentSet].champions.filter(champ => comp.includes(champ.name));

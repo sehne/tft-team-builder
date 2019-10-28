@@ -45,9 +45,10 @@
 
             <div v-for="trait in getOrigins()" v-bind:key="trait.name">
               <h3>
-                <span
-                  v-bind:class="[ getColor(trait.name) ]"
-                >{{trait.name}} {{getTraitCount(trait.name)}}</span> /
+                <span v-bind:class="[ getColor(trait.name) ]">
+                  <span class="capitalize">{{trait.name}}</span>
+                  {{getTraitCount(trait.name)}}
+                </span> /
                 <span
                   v-bind:class="{[ getColor(trait.name) ]: isBronze(trait.name)}"
                   v-if="getTrait(trait.name).bronze"
@@ -85,9 +86,10 @@
             <h1>Classes</h1>
             <div v-for="trait in getClasses()" v-bind:key="trait.name">
               <h3>
-                <span
-                  v-bind:class="[ getColor(trait.name) ]"
-                >{{trait.name}} {{getTraitCount(trait.name)}}</span> /
+                <span v-bind:class="[ getColor(trait.name) ]">
+                  <span class="capitalize">{{trait.name}}</span>
+                  {{getTraitCount(trait.name)}}
+                </span> /
                 <span
                   v-bind:class="{[ getColor(trait.name) ]: isBronze(trait.name)}"
                   v-if="getTrait(trait.name).bronze"
@@ -124,8 +126,8 @@
 
           <div class="column">
             <h1>Cost</h1>
-            <div v-for="cost in [1,2,3,4,5]" v-bind:key="cost">
-              <h3>{{cost}} Gold</h3>
+            <div v-for="cost in [1,2,3,4,5,7]" v-bind:key="cost">
+              <h3 v-if="getChampionsByCostLength(cost)">{{cost}} Gold</h3>
               <div
                 v-for="champ in getChampionsByCost(cost)"
                 v-bind:key="champ.name"
@@ -173,11 +175,11 @@
 
       <div id="table" v-if="currentTab == 'table'">
         <table>
-          <tr v-for="origin in [0, ...getOrigins()]" v-bind:key="origin.name">
-            <th v-for="trait in [0, ...getClasses()]" v-bind:key="trait.name">
-              <div v-if="origin == 0 && trait != 0">
+          <tr v-for="origin in [0, ...getOrigins(), 'item']" v-bind:key="origin.name">
+            <th v-for="trait in [0, ...getClasses(), 'item']" v-bind:key="trait.name">
+              <div v-if="origin == 0 && trait != 0 && trait != 'item'" class="cell-title">
                 <span v-bind:class="[ getColor(trait.name) ]">
-                  {{trait.name}}
+                  <span class="capitalize">{{trait.name}}</span>
                   <br />
                   {{getTraitCount(trait.name)}}
                 </span> /
@@ -194,9 +196,9 @@
                   v-if="getTrait(trait.name).gold"
                 >{{getTrait(trait.name).gold}}&nbsp;</span>
               </div>
-              <div v-if="trait == 0 && origin != 0">
+              <div v-if="trait == 0 && origin != 0 && origin != 'item'" class="cell-title">
                 <span v-bind:class="[ getColor(origin.name) ]">
-                  {{origin.name}}
+                  <span class="capitalize">{{origin.name}}</span>
                   <br />
                   {{getTraitCount(origin.name)}}
                 </span> /
@@ -213,9 +215,38 @@
                   v-if="getTrait(origin.name).gold"
                 >{{getTrait(origin.name).gold}}&nbsp;</span>
               </div>
+              <div v-if="(origin == 0 && trait == 'item') || (trait == 0 && origin == 'item')">Items</div>
               <div v-if="origin != 0 && trait != 0">
                 <div
                   v-for="champ in getMultipleTraitChampions([origin.name, trait.name])"
+                  v-bind:key="champ.name"
+                  class="champion"
+                  v-bind:class="[getChampionColor(champ)]"
+                  v-on:click="toggle(champ)"
+                >
+                  <div class="image-wrapper">
+                    <img :src="champ.image" />
+                  </div>
+                </div>
+              </div>
+
+              <div v-if="origin == 'item' && trait != 0 && trait != 'item'">
+                <div
+                  v-for="champ in getTraitItems(trait.name)"
+                  v-bind:key="champ.name"
+                  class="champion"
+                  v-bind:class="[getChampionColor(champ)]"
+                  v-on:click="toggle(champ)"
+                >
+                  <div class="image-wrapper">
+                    <img :src="champ.image" />
+                  </div>
+                </div>
+              </div>
+
+              <div v-if="trait == 'item' && origin != 0 && origin != 'item'">
+                <div
+                  v-for="champ in getTraitItems(origin.name)"
                   v-bind:key="champ.name"
                   class="champion"
                   v-bind:class="[getChampionColor(champ)]"
@@ -380,6 +411,10 @@ h3 {
   font-size: 16px;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .team {
   min-height: 42px;
 }
@@ -445,5 +480,9 @@ img {
 
 th {
   outline: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.cell-title {
+  padding: 0 5px;
 }
 </style>
