@@ -610,6 +610,17 @@ let set = {
             "kaiSa"
         ],
         [
+            'ahri',
+            'lulu',
+            'aatrox',
+            'evelynn',
+            'morgana',
+            'veigar',
+            'aurelionSol',
+            'brand',
+            'yuumi'
+        ],
+        [
             "warwick",
             "blitzcrank",
             "lucian",

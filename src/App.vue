@@ -148,7 +148,9 @@
             </div>
 
             <div class="team-comps" v-if="getCompsLength()">
-              <h1>Popular Team Comps</h1>
+              <h1>
+                <a href="https://tftactics.gg/tierlist/team-comps">Popular Team Comps</a>
+              </h1>
               <div v-for="(comp, index) in getComps()" v-bind:key="index" class="team-comp">
                 <div
                   v-for="champ in getChampionsFromComp(comp)"
@@ -438,6 +440,20 @@ h3 {
 
 .capitalize {
   text-transform: capitalize;
+}
+
+a:link,
+a:visited {
+  color: inherit;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: inherit;
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 .team {

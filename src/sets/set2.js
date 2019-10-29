@@ -277,7 +277,7 @@ let set = {
             name: "annie",
             selected: false,
             cost: 4,
-            traits: ["inferno", "mage"],
+            traits: ["inferno", "summoner"],
             image: require("../assets/set2/Annie.png")
         },
         {
