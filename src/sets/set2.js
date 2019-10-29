@@ -218,10 +218,10 @@ let set = {
             image: require("../assets/set2/Nocturne.png")
         },
         {
-            name: "qiyanaWoodland",
+            name: "qiyanaMountain",
             selected: false,
             cost: 3,
-            traits: ["woodland", "assassin"],
+            traits: ["mountain", "assassin"],
             image: require("../assets/set2/Qiyana.png")
         },
         {

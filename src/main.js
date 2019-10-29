@@ -107,6 +107,28 @@ Vue.mixin({
             this.getTraitCount(traitName) == this.getTrait(traitName).bronze))
       );
     },
+    getOneOffColor(traitName) {
+      if (!traitName) return "";
+      if (this.isOneOffGold(traitName)) return "gold";
+      if (this.isOneOffSilver(traitName)) return "silver";
+      if (this.isOneOffBronze(traitName)) return "bronze";
+      return "";
+    },
+    isOneOffGold(traitName) {
+      return this.getTraitCount(traitName) + 1 == this.getTrait(traitName).gold && this.getTrait(traitName).gold > 1;
+    },
+    isOneOffSilver(traitName) {
+      return (
+        this.getTrait(traitName).silver &&
+        this.getTraitCount(traitName) + 1 == this.getTrait(traitName).silver && this.getTrait(traitName).silver > 1
+      );
+    },
+    isOneOffBronze(traitName) {
+      return (
+        this.getTrait(traitName).bronze &&
+        this.getTraitCount(traitName) + 1 == this.getTrait(traitName).bronze && this.getTrait(traitName).bronze > 1
+      );
+    },
     getChampionsByCost(cost) {
       return this[this.currentSet].champions.filter(champ => champ.cost == cost);
     },

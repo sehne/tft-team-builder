@@ -47,8 +47,8 @@
               <h3>
                 <span v-bind:class="[ getColor(trait.name) ]">
                   <span class="capitalize">{{trait.name}}</span>
-                  {{getTraitCount(trait.name)}}
-                </span> /
+                  {{getTraitCount(trait.name)}} /
+                </span>
                 <span
                   v-bind:class="{[ getColor(trait.name) ]: isBronze(trait.name)}"
                   v-if="getTrait(trait.name).bronze"
@@ -62,11 +62,8 @@
                   v-if="getTrait(trait.name).gold"
                 >{{getTrait(trait.name).gold}}&nbsp;</span>
 
-                <span v-bind:class="{oneOff: isOneOff(trait.name)}">
+                <span v-bind:class="[getOneOffColor(trait.name) + '-border']">
                   <arrow-up-bold-icon />
-                </span>
-                <span v-bind:class="{oneUp: isOneUp(trait.name)}">
-                  <arrow-down-bold-icon />
                 </span>
               </h3>
               <div
@@ -88,8 +85,8 @@
               <h3>
                 <span v-bind:class="[ getColor(trait.name) ]">
                   <span class="capitalize">{{trait.name}}</span>
-                  {{getTraitCount(trait.name)}}
-                </span> /
+                  {{getTraitCount(trait.name)}} /
+                </span>
                 <span
                   v-bind:class="{[ getColor(trait.name) ]: isBronze(trait.name)}"
                   v-if="getTrait(trait.name).bronze"
@@ -103,11 +100,8 @@
                   v-if="getTrait(trait.name).gold"
                 >{{getTrait(trait.name).gold}}&nbsp;</span>
 
-                <span v-bind:class="{oneOff: isOneOff(trait.name)}">
+                <span v-bind:class="[getOneOffColor(trait.name) + '-border']">
                   <arrow-up-bold-icon />
-                </span>
-                <span v-bind:class="{oneUp: isOneUp(trait.name)}">
-                  <arrow-down-bold-icon />
                 </span>
               </h3>
               <div
@@ -176,13 +170,17 @@
       <div id="table" v-if="currentTab == 'table'">
         <table>
           <tr v-for="origin in [0, ...getOrigins(), 'item']" v-bind:key="origin.name">
-            <th v-for="trait in [0, ...getClasses(), 'item']" v-bind:key="trait.name">
+            <th
+              v-for="trait in [0, ...getClasses(), 'item']"
+              v-bind:key="trait.name"
+              v-bind:class="{[ getOneOffColor(origin.name) + '-outline' ]: (trait == 0), [ getOneOffColor(trait.name) + '-outline' ]: (origin == 0)}"
+            >
               <div v-if="origin == 0 && trait != 0 && trait != 'item'" class="cell-title">
                 <span v-bind:class="[ getColor(trait.name) ]">
                   <span class="capitalize">{{trait.name}}</span>
                   <br />
-                  {{getTraitCount(trait.name)}}
-                </span> /
+                  {{getTraitCount(trait.name)}} /
+                </span>
                 <span
                   v-bind:class="{[ getColor(trait.name) ]: isBronze(trait.name)}"
                   v-if="getTrait(trait.name).bronze"
@@ -200,8 +198,8 @@
                 <span v-bind:class="[ getColor(origin.name) ]">
                   <span class="capitalize">{{origin.name}}</span>
                   <br />
-                  {{getTraitCount(origin.name)}}
-                </span> /
+                  {{getTraitCount(origin.name)}} /
+                </span>
                 <span
                   v-bind:class="{[ getColor(origin.name) ]: isBronze(origin.name)}"
                   v-if="getTrait(origin.name).bronze"
@@ -262,7 +260,7 @@
         </table>
       </div>
 
-      <div class="last-update">Last Update: 2019-10-25</div>
+      <div class="last-update">Last Update: 2019-10-28</div>
     </div>
   </div>
 </template>
@@ -276,7 +274,7 @@ export default {
 <style lang="scss">
 body {
   margin: 0;
-  color: #ffffff88;
+  color: #ffffffbb;
   background-color: #081e31;
   font-family: Helvetica;
 }
@@ -359,12 +357,14 @@ body {
   outline: none;
 }
 
+// Champions
+
 .champion {
   padding: 2px;
   margin: 2px 2px;
   display: inline-flex;
-  filter: brightness(0.5);
   border-radius: 50%;
+  filter: brightness(0.5);
 }
 
 .image-wrapper {
@@ -377,22 +377,47 @@ body {
   border-radius: 50%;
 }
 
+//OLD
+// .selected { // selected & 1 active trait
+//   background-color: #c0c0c0;
+//   filter: brightness(1);
+// }
+// .important { // selected & 2+ active traits
+//   background-color: #ffd700 !important;
+//   filter: brightness(1);
+// }
+// .unimportant { // selected & 0 active traits
+//   background-color: #804a00 !important;
+//   filter: brightness(1);
+// }
+// .option { // unselected & 1 active trait
+//   background-color: #c0c0c044 !important;
+// }
+// .recommended { // unselected & 2+ active traits
+//   background-color: #ffd700 !important;
+// }
+
 .selected {
+  // selected & 1 active trait
   background-color: #c0c0c0;
   filter: brightness(1);
 }
 .important {
-  background-color: #ffd700 !important;
+  // selected & 2+ active traits
+  background-color: #c0c0c0 !important;
   filter: brightness(1);
 }
 .unimportant {
-  background-color: #804a00 !important;
+  // selected & 0 active traits
+  background-color: #c0c0c0 !important;
   filter: brightness(1);
 }
 .option {
-  background-color: #c0c0c044 !important;
+  // unselected & 1 active trait
+  background-color: transparent;
 }
 .recommended {
+  // unselected & 2+ active traits
   background-color: #ffd700 !important;
 }
 
@@ -403,7 +428,7 @@ h3 {
 
 h1 {
   font-size: 18px;
-  margin: 0 0 3px;
+  margin: 3px 0;
 }
 
 h3 {
@@ -456,13 +481,42 @@ img {
   font-weight: bold;
 }
 
+.bronze-outline {
+  outline: 2px solid #804a00;
+}
+.silver-outline {
+  outline: 2px solid #c0c0c0;
+}
+.gold-outline {
+  outline: 2px solid #ffd700;
+}
+
+.bronze-border {
+  color: #804a00;
+  border: 2px solid #904a00;
+  border-radius: 50%;
+}
+.silver-border {
+  color: #c0c0c0;
+  border: 2px solid #c0c0c0;
+  border-radius: 50%;
+}
+.gold-border {
+  color: #ffd700;
+  border: 2px solid #ffd700;
+  border-radius: 50%;
+}
+.-border {
+  visibility: hidden;
+}
+
 .oneOff {
-  color: red;
+  color: green;
   font-weight: bold;
 }
 
 .oneUp {
-  color: red;
+  color: green;
   font-weight: bold;
 }
 
@@ -477,8 +531,12 @@ img {
 }
 
 // Table style
+table {
+  margin-top: 5px;
+}
 
 th {
+  font-weight: initial;
   outline: 1px solid rgba(255, 255, 255, 0.5);
 }
 
