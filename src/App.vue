@@ -147,7 +147,7 @@
               </div>
             </div>
 
-            <div class="team-comps" v-if="getComps().lenght">
+            <div class="team-comps" v-if="getCompsLength()">
               <h1>Popular Team Comps</h1>
               <div v-for="(comp, index) in getComps()" v-bind:key="index" class="team-comp">
                 <div
@@ -260,7 +260,7 @@
         </table>
       </div>
 
-      <div class="last-update">Last Update: 2019-10-28</div>
+      <div class="last-update">Last Update: 2019-10-29</div>
     </div>
   </div>
 </template>

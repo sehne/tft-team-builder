@@ -600,27 +600,46 @@ let set = {
     ],
     comps: [
         [
-            "darius",
-            "mordekaiser",
-            "poppy",
-            "katarina",
-            "draven",
-            "sejuani",
-            "swain",
-            "darkin"
+            "khaZix",
+            "blitzcrank",
+            "rekSai",
+            "vi",
+            "akali",
+            "choGath",
+            "jinx",
+            "kaiSa"
         ],
         [
-            "ahri",
-            "lulu",
+            "warwick",
+            "blitzcrank",
+            "lucian",
+            "rekSai",
+            "vi",
+            "volibear",
+            "choGath",
+            "jinx"
+        ],
+        [
+            "morderkaiser",
             "poppy",
-            "shyvana",
-            "gnar",
             "aurelionSol",
+            "kindred",
+            "leona",
             "sejuani",
+            "kayle",
+            "pantheon",
+        ],
+        [
+            "darius",
+            "mordekaiser",
+            "katarina",
+            "poppy",
+            "draven",
+            "sejuani",
+            "kayle",
             "swain",
             "darkin"
-        ],
-        ["nidalee", "gnar", "rengar", "warwick", "jayce", "akali", "pyke", "vi"]
+        ]
     ]
 }
 

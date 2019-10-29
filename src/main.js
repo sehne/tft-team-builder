@@ -175,6 +175,9 @@ Vue.mixin({
     },
     getComps() {
       return this[this.currentSet].comps;
+    },
+    getCompsLength() {
+      return this[this.currentSet].comps.length;
     }
   }
 })

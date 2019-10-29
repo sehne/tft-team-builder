@@ -664,7 +664,59 @@ let set = {
         { name: "warden", type: "class", bronze: 2, silver: 4, gold: 6 }
     ],
     comps: [
-
+        [
+            'yasuo',
+            'aatrox',
+            'qiyanaWind',
+            'sivir',
+            'janna',
+            'khaZix',
+            'masterYi',
+            'zed'
+        ],
+        [
+            'zyra',
+            'malzahar',
+            'azir',
+            'veigar',
+            'annie',
+            'brand',
+            'yorick',
+            'zed',
+            'magesCap'
+        ],
+        [
+            'drMundo',
+            'nautilus',
+            'ashe',
+            'malphite',
+            'twitch',
+            'taric',
+            'singed',
+            'wardensMail'
+        ],
+        [
+            'vayne',
+            'varus',
+            'ezreal',
+            'kindred',
+            'ashe',
+            'malphite',
+            'twitch',
+            'taric',
+            'infernoCinder'
+        ],
+        [
+            'thresh',
+            'varus',
+            'nautilus',
+            'kindred',
+            'ashe',
+            'malphite',
+            'twitch',
+            'taric',
+            'infernoCinder'
+        ],
     ]
 }
 
