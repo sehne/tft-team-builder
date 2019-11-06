@@ -148,9 +148,7 @@
             </div>
 
             <div class="team-comps" v-if="getCompsLength()">
-              <h1>
-                <a href="https://tftactics.gg/tierlist/team-comps">Popular Team Comps</a>
-              </h1>
+              <h1>Popular Team Comps</h1>
               <div v-for="(comp, index) in getComps()" v-bind:key="index" class="team-comp">
                 <div
                   v-for="champ in getChampionsFromComp(comp)"
@@ -262,7 +260,7 @@
         </table>
       </div>
 
-      <div class="last-update">Last Update: 2019-10-29</div>
+      <div class="last-update">Last Update: 2019-11-06</div>
     </div>
   </div>
 </template>

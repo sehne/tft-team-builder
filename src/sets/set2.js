@@ -165,7 +165,7 @@ let set = {
             name: "yasuo",
             selected: false,
             cost: 2,
-            traits: ["wind", "blademaster"],
+            traits: ["cloud", "blademaster"],
             image: require("../assets/set2/Yasuo.png")
         },
         {
@@ -218,10 +218,10 @@ let set = {
             image: require("../assets/set2/Nocturne.png")
         },
         {
-            name: "qiyanaMountain",
+            name: "qiyanaCloud",
             selected: false,
             cost: 3,
-            traits: ["mountain", "assassin"],
+            traits: ["cloud", "assassin"],
             image: require("../assets/set2/Qiyana.png")
         },
         {
@@ -232,17 +232,17 @@ let set = {
             image: require("../assets/set2/Qiyana.png")
         },
         {
+            name: "qiyanaMountain",
+            selected: false,
+            cost: 3,
+            traits: ["mountain", "assassin"],
+            image: require("../assets/set2/Qiyana.png")
+        },
+        {
             name: "qiyanaOcean",
             selected: false,
             cost: 3,
             traits: ["ocean", "assassin"],
-            image: require("../assets/set2/Qiyana.png")
-        },
-        {
-            name: "qiyanaWind",
-            selected: false,
-            cost: 3,
-            traits: ["wind", "assassin"],
             image: require("../assets/set2/Qiyana.png")
         },
         {
@@ -298,7 +298,7 @@ let set = {
             name: "janna",
             selected: false,
             cost: 4,
-            traits: ["wind", "mystic"],
+            traits: ["cloud", "mystic"],
             image: require("../assets/set2/Janna.png")
         },
         {
@@ -372,6 +372,13 @@ let set = {
             image: require("../assets/set2/Zed.png")
         },
         {
+            name: "luxCloud",
+            selected: false,
+            cost: 7,
+            traits: ["cloud", "avatar"],
+            image: require("../assets/set2/Lux.png")
+        },
+        {
             name: "luxCrystal",
             selected: false,
             cost: 7,
@@ -383,13 +390,6 @@ let set = {
             selected: false,
             cost: 7,
             traits: ["electric", "avatar"],
-            image: require("../assets/set2/Lux.png")
-        },
-        {
-            name: "luxWoodland",
-            selected: false,
-            cost: 7,
-            traits: ["woodland", "avatar"],
             image: require("../assets/set2/Lux.png")
         },
         {
@@ -435,10 +435,10 @@ let set = {
             image: require("../assets/set2/Lux.png")
         },
         {
-            name: "luxWind",
+            name: "luxWoodland",
             selected: false,
             cost: 7,
-            traits: ["wind", "avatar"],
+            traits: ["woodland", "avatar"],
             image: require("../assets/set2/Lux.png")
         },
         {
@@ -612,10 +612,10 @@ let set = {
 
     ],
     traits: [
+        { name: "cloud", type: "origin", bronze: 2, silver: 3, gold: 4 },
         { name: "crystal", type: "origin", bronze: 2, silver: null, gold: 4 },
         { name: "desert", type: "origin", bronze: 2, silver: null, gold: 4 },
         { name: "electric", type: "origin", bronze: 2, silver: 3, gold: 4 },
-        { name: "woodland", type: "origin", bronze: null, silver: null, gold: 3 },
         { name: "glacial", type: "origin", bronze: 2, silver: 4, gold: 6 },
         { name: "inferno", type: "origin", bronze: 3, silver: 6, gold: 9 },
         { name: "light", type: "origin", bronze: 3, silver: 6, gold: 9 },
@@ -630,7 +630,7 @@ let set = {
         { name: "poison", type: "origin", bronze: null, silver: null, gold: 3 },
         { name: "shadow", type: "origin", bronze: 2, silver: null, gold: 4 },
         { name: "steel", type: "origin", bronze: 2, silver: 3, gold: 4 },
-        { name: "wind", type: "origin", bronze: 2, silver: 3, gold: 4 },
+        { name: "woodland", type: "origin", bronze: null, silver: null, gold: 3 },
 
         { name: "alchemist", type: "class", bronze: null, silver: null, gold: 1 },
         { name: "assassin", type: "class", bronze: 3, silver: null, gold: 6 },
@@ -665,58 +665,86 @@ let set = {
     ],
     comps: [
         [
+            'annie',
+            'sion',
+            'yorick',
+            'malzahar',
+            'veigar',
+            'kindred',
+            'varus',
+        ],
+        [
+            'janna',
             'yasuo',
+            'masterYi',
+            'nocturne',
+            'sivir',
+            'khaZix',
+            'qiyanaCloud',
+        ],
+        [
+            'olaf',
+            'yasuo',
+            'renekton',
+            'sivir',
+            'janna',
+            'volibear',
+            'nami',
+        ],
+        [
+            'masterYi',
             'aatrox',
-            'qiyanaWind',
+            'yasuo',
+            'yorick',
+            'jax',
+            'soraka',
+            'vayne',
+            'sivir',
+            'talismanOfLight'
+        ],
+        [
+            'veigar',
+            'nautilus',
+            'thresh',
+            'taliyah',
+            'leBlanc',
+            'vladimir',
+            'syndra',
+            'brand',
+        ],
+        [
+            'vayne',
+            'nasus',
+            'jax',
+            'aatrox',
+            'azir',
+            'sivir',
+            'yorick',
+            'zed',
+            'talismanOfLight'
+        ],
+        [
+            'warwick',
+            'braum',
+            'volibear',
+            'ezreal',
+            'drMundo',
+            'olaf',
+            'twitch',
+            'singed',
+            'frozenMallet'
+        ],
+        [
+            'malzahar',
+            'yasuo',
+            'kindred',
+            'sion',
             'sivir',
             'janna',
             'khaZix',
             'masterYi',
-            'zed'
-        ],
-        [
-            'zyra',
-            'malzahar',
-            'azir',
-            'veigar',
-            'annie',
-            'brand',
-            'yorick',
-            'zed',
-            'magesCap'
-        ],
-        [
-            'drMundo',
-            'nautilus',
-            'ashe',
-            'malphite',
-            'twitch',
-            'taric',
-            'singed',
-            'wardensMail'
-        ],
-        [
-            'vayne',
-            'varus',
-            'ezreal',
-            'kindred',
-            'ashe',
-            'malphite',
-            'twitch',
-            'taric',
-            'infernoCinder'
-        ],
-        [
-            'thresh',
-            'varus',
-            'nautilus',
-            'kindred',
-            'ashe',
-            'malphite',
-            'twitch',
-            'taric',
-            'infernoCinder'
-        ],
+            'bladeOfTheRuinedKing'
+        ]
     ]
 }
 
