@@ -127,6 +127,13 @@ let set = {
             image: require("../assets/set2/RekSai.png")
         },
         {
+            name: "senna",
+            selected: false,
+            cost: 2,
+            traits: ["shadow", "soulbound"],
+            image: require("../assets/set2/Senna.png")
+        },
+        {
             name: "skarner",
             selected: false,
             cost: 2,
@@ -309,6 +316,13 @@ let set = {
             image: require("../assets/set2/KhaZix.png")
         },
         {
+            name: "lucian",
+            selected: false,
+            cost: 4,
+            traits: ["light", "soulbound"],
+            image: require("../assets/set2/Lucian.png")
+        },
+        {
             name: "malphite",
             selected: false,
             cost: 4,
@@ -335,6 +349,13 @@ let set = {
             cost: 4,
             traits: ["light", "summoner"],
             image: require("../assets/set2/Yorick.png")
+        },
+        {
+            name: "amumu",
+            selected: false,
+            cost: 5,
+            traits: ["inferno", "warden"],
+            image: require("../assets/set2/Amumu.png")
         },
         {
             name: "masterYi",
@@ -628,7 +649,7 @@ let set = {
             gold: 6
         },
         { name: "poison", type: "origin", bronze: null, silver: null, gold: 3 },
-        { name: "shadow", type: "origin", bronze: 2, silver: null, gold: 4 },
+        { name: "shadow", type: "origin", bronze: 3, silver: null, gold: 6 },
         { name: "steel", type: "origin", bronze: 2, silver: 3, gold: 4 },
         { name: "woodland", type: "origin", bronze: null, silver: null, gold: 3 },
 
@@ -660,90 +681,79 @@ let set = {
             gold: 3
         },
         { name: "ranger", type: "class", bronze: 2, silver: 4, gold: 6 },
+        { name: "soulbound", type: "class", bronze: null, silver: null, gold: 2 },
         { name: "summoner", type: "class", bronze: 3, silver: null, gold: 6 },
         { name: "warden", type: "class", bronze: 2, silver: 4, gold: 6 }
     ],
     comps: [
         [
-            'annie',
-            'sion',
-            'yorick',
-            'malzahar',
-            'veigar',
-            'kindred',
-            'varus',
-        ],
-        [
-            'janna',
-            'yasuo',
-            'masterYi',
-            'nocturne',
-            'sivir',
-            'khaZix',
-            'qiyanaCloud',
-        ],
-        [
-            'olaf',
-            'yasuo',
-            'renekton',
-            'sivir',
-            'janna',
-            'volibear',
-            'nami',
-        ],
-        [
-            'masterYi',
-            'aatrox',
-            'yasuo',
-            'yorick',
-            'jax',
-            'soraka',
-            'vayne',
-            'sivir',
-            'talismanOfLight'
-        ],
-        [
-            'veigar',
-            'nautilus',
-            'thresh',
-            'taliyah',
-            'leBlanc',
-            'vladimir',
-            'syndra',
-            'brand',
-        ],
-        [
-            'vayne',
-            'nasus',
-            'jax',
-            'aatrox',
-            'azir',
-            'sivir',
-            'yorick',
-            'zed',
-            'talismanOfLight'
-        ],
-        [
-            'warwick',
-            'braum',
-            'volibear',
-            'ezreal',
+            'kogMaw',
+            'rekSai',
+            'skarner',
             'drMundo',
-            'olaf',
+            'nocturne',
+            'ashe',
             'twitch',
             'singed',
-            'frozenMallet'
         ],
         [
-            'malzahar',
-            'yasuo',
-            'kindred',
+            'ornn',
+            'thresh',
+            'volibear',
+            'nautilus',
+            'qiyanaMountain',
+            'khaZix',
+            'malphite',
+            'zed',
+        ],
+        [
+            'taliyah',
+            'vladimir',
+            'syndra',
+            'thresh',
+            'veigar',
+            'brand',
+            'malphite',
+            'nami',
+            'magesCap',
+        ],
+        [
+            'diana',
+            'maokai',
+            'renekton',
+            'ivern',
+            'leBlanc',
+            'khaZix',
+        ],
+        [
+            'kogMaw',
+            'warwick',
+            'rekSai',
+            'drMundo',
             'sion',
+            'olaf',
+            'twitch',
+        ],
+        [
+            'nocturne',
+            'yasuo',
+            'rekSai',
+            'masterYi',
+            'khaZix',
             'sivir',
             'janna',
-            'khaZix',
-            'masterYi',
+            'qiyanaCloud',
             'bladeOfTheRuinedKing'
+        ],
+        [
+            'yorick',
+            'sion',
+            'annie',
+            'lucian',
+            'senna',
+            'kindred',
+            'zyra',
+            'vayne',
         ]
     ]
 }

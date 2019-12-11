@@ -260,7 +260,7 @@
         </table>
       </div>
 
-      <div class="last-update">Last Update: 2019-11-06</div>
+      <div class="last-update">Last Update: 2019-12-11</div>
     </div>
   </div>
 </template>
