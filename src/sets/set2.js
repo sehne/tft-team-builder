@@ -15,6 +15,13 @@ let set = {
             image: require("../assets/set2/KogMaw.png")
         },
         {
+            name: "leona",
+            selected: false,
+            cost: 1,
+            traits: ["lunar", "warden"],
+            image: require("../assets/set2/Leona.png")
+        },
+        {
             name: "maokai",
             selected: false,
             cost: 1,
@@ -202,6 +209,13 @@ let set = {
             cost: 3,
             traits: ["glacial", "ranger"],
             image: require("../assets/set2/Ezreal.png")
+        },
+        {
+            name: "karma",
+            selected: false,
+            cost: 3,
+            traits: ["lunar", "mystic"],
+            image: require("../assets/set2/Karma.png")
         },
         {
             name: "kindred",
@@ -640,6 +654,7 @@ let set = {
         { name: "glacial", type: "origin", bronze: 2, silver: 4, gold: 6 },
         { name: "inferno", type: "origin", bronze: 3, silver: 6, gold: 9 },
         { name: "light", type: "origin", bronze: 3, silver: 6, gold: 9 },
+        { name: "lunar", type: "origin", bronze: null, silver: null, gold: 2 },
         { name: "mountain", type: "origin", bronze: null, silver: null, gold: 2 },
         {
             name: "ocean",
@@ -687,74 +702,37 @@ let set = {
     ],
     comps: [
         [
-            'kogMaw',
             'rekSai',
-            'skarner',
-            'drMundo',
+            'yasuo',
             'nocturne',
-            'ashe',
-            'twitch',
-            'singed',
+            'qiyanaCloud',
+            'sivir',
+            'janna',
+            'khaZix',
+            'masterYi',
+            'bladeOfTheRuinedKing',
         ],
         [
             'ornn',
-            'thresh',
             'volibear',
             'nautilus',
-            'qiyanaMountain',
-            'khaZix',
-            'malphite',
+            'janna',
+            'amumu',
+            'nami',
+            'taric',
             'zed',
         ],
         [
-            'taliyah',
-            'vladimir',
+            'leona',
             'syndra',
             'thresh',
-            'veigar',
+            'karma',
+            'nautilus',
             'brand',
-            'malphite',
+            'amumu',
             'nami',
-            'magesCap',
+            'magesCap'
         ],
-        [
-            'diana',
-            'maokai',
-            'renekton',
-            'ivern',
-            'leBlanc',
-            'khaZix',
-        ],
-        [
-            'kogMaw',
-            'warwick',
-            'rekSai',
-            'drMundo',
-            'sion',
-            'olaf',
-            'twitch',
-        ],
-        [
-            'nocturne',
-            'yasuo',
-            'rekSai',
-            'masterYi',
-            'khaZix',
-            'sivir',
-            'janna',
-            'qiyanaCloud',
-            'bladeOfTheRuinedKing'
-        ],
-        [
-            'yorick',
-            'sion',
-            'annie',
-            'lucian',
-            'senna',
-            'kindred',
-            'zyra',
-            'vayne',
-        ]
     ]
 }
 
