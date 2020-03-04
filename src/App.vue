@@ -19,6 +19,7 @@
       <select v-model="currentSet" class="set-select">
         <option value="set1">Set 1</option>
         <option value="set2">Set 2</option>
+        <option value="set3">Set 3</option>
       </select>
     </div>
 

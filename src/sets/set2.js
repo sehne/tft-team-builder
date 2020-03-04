@@ -701,38 +701,7 @@ let set = {
         { name: "warden", type: "class", bronze: 2, silver: 4, gold: 6 }
     ],
     comps: [
-        [
-            'rekSai',
-            'yasuo',
-            'nocturne',
-            'qiyanaCloud',
-            'sivir',
-            'janna',
-            'khaZix',
-            'masterYi',
-            'bladeOfTheRuinedKing',
-        ],
-        [
-            'ornn',
-            'volibear',
-            'nautilus',
-            'janna',
-            'amumu',
-            'nami',
-            'taric',
-            'zed',
-        ],
-        [
-            'leona',
-            'syndra',
-            'thresh',
-            'karma',
-            'nautilus',
-            'brand',
-            'amumu',
-            'nami',
-            'magesCap'
-        ],
+
     ]
 }
 

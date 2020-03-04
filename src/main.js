@@ -5,19 +5,22 @@ import ArrowUpBoldIcon from 'vue-material-design-icons/ArrowUpBold.vue';
 import ArrowDownBoldIcon from 'vue-material-design-icons/ArrowDownBold.vue';
 import set1 from './sets/set1';
 import set2 from './sets/set2';
+import set3 from './sets/set3';
 
 Vue.config.productionTip = false
 
 require('./sets/set1');
 require('./sets/set2');
+require('./sets/set3');
 
 Vue.mixin({
   data() {
     return {
       currentTab: "list",
-      currentSet: "set2",
+      currentSet: "set3",
       set1: set1.set,
-      set2: set2.set
+      set2: set2.set,
+      set3: set3.set
     };
   },
   methods: {
