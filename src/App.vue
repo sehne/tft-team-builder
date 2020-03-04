@@ -34,7 +34,7 @@
           v-on:click="toggle(champ)"
         >
           <div class="image-wrapper">
-            <img :src="champ.image" />
+            <img :src="champ.image" v-bind:class="{'img-with-border': currentSet === 'set2'}" />
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@
                 v-on:click="toggle(champ)"
               >
                 <div class="image-wrapper">
-                  <img :src="champ.image" />
+                  <img :src="champ.image" v-bind:class="{'img-with-border': currentSet === 'set2'}" />
                 </div>
               </div>
             </div>
@@ -113,7 +113,7 @@
                 v-on:click="toggle(champ)"
               >
                 <div class="image-wrapper">
-                  <img :src="champ.image" />
+                  <img :src="champ.image" v-bind:class="{'img-with-border': currentSet === 'set2'}" />
                 </div>
               </div>
             </div>
@@ -131,7 +131,7 @@
                 v-on:click="toggle(champ)"
               >
                 <div class="image-wrapper">
-                  <img :src="champ.image" />
+                  <img :src="champ.image" v-bind:class="{'img-with-border': currentSet === 'set2'}" />
                 </div>
               </div>
             </div>
@@ -144,7 +144,7 @@
               v-on:click="toggle(champ)"
             >
               <div class="image-wrapper">
-                <img :src="champ.image" />
+                <img :src="champ.image" v-bind:class="{'img-with-border': currentSet === 'set2'}" />
               </div>
             </div>
 
@@ -159,7 +159,10 @@
                   v-on:click="toggle(champ)"
                 >
                   <div class="image-wrapper">
-                    <img :src="champ.image" />
+                    <img
+                      :src="champ.image"
+                      v-bind:class="{'img-with-border': currentSet === 'set2'}"
+                    />
                   </div>
                 </div>
               </div>
@@ -224,7 +227,10 @@
                   v-on:click="toggle(champ)"
                 >
                   <div class="image-wrapper">
-                    <img :src="champ.image" />
+                    <img
+                      :src="champ.image"
+                      v-bind:class="{'img-with-border': currentSet === 'set2'}"
+                    />
                   </div>
                 </div>
               </div>
@@ -238,7 +244,10 @@
                   v-on:click="toggle(champ)"
                 >
                   <div class="image-wrapper">
-                    <img :src="champ.image" />
+                    <img
+                      :src="champ.image"
+                      v-bind:class="{'img-with-border': currentSet === 'set2'}"
+                    />
                   </div>
                 </div>
               </div>
@@ -252,7 +261,10 @@
                   v-on:click="toggle(champ)"
                 >
                   <div class="image-wrapper">
-                    <img :src="champ.image" />
+                    <img
+                      :src="champ.image"
+                      v-bind:class="{'img-with-border': currentSet === 'set2'}"
+                    />
                   </div>
                 </div>
               </div>
@@ -261,7 +273,7 @@
         </table>
       </div>
 
-      <div class="last-update">Last Update: 2020-01-07</div>
+      <div class="last-update">Last Update: 2020-03-05</div>
     </div>
   </div>
 </template>
@@ -362,7 +374,7 @@ body {
 
 .champion {
   padding: 2px;
-  margin: 2px 2px;
+  margin: 2px;
   display: inline-flex;
   border-radius: 50%;
   filter: brightness(0.5);
@@ -376,6 +388,18 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+}
+
+img {
+  height: 32px;
+  width: 32px;
+  min-width: 32px;
+}
+
+.img-with-border {
+  height: 36px;
+  width: 36px;
+  min-width: 36px;
 }
 
 //OLD
@@ -457,12 +481,6 @@ a:active {
 
 .team {
   min-height: 42px;
-}
-
-img {
-  height: 36px;
-  width: 36px;
-  min-width: 36px;
 }
 
 .row {
