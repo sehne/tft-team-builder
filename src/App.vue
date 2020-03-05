@@ -33,7 +33,7 @@
           v-bind:class="[getChampionColor(champ)]"
           v-on:click="toggle(champ)"
         >
-          <div class="image-wrapper">
+          <div class="image-wrapper" :title="champ.name">
             <img :src="champ.image" v-bind:class="{'img-with-border': currentSet === 'set2'}" />
           </div>
         </div>
@@ -74,7 +74,7 @@
                 v-bind:class="[getChampionColor(champ)]"
                 v-on:click="toggle(champ)"
               >
-                <div class="image-wrapper">
+                <div class="image-wrapper" :title="champ.name">
                   <img :src="champ.image" v-bind:class="{'img-with-border': currentSet === 'set2'}" />
                 </div>
               </div>
@@ -112,7 +112,7 @@
                 v-bind:class="[getChampionColor(champ)]"
                 v-on:click="toggle(champ)"
               >
-                <div class="image-wrapper">
+                <div class="image-wrapper" :title="champ.name">
                   <img :src="champ.image" v-bind:class="{'img-with-border': currentSet === 'set2'}" />
                 </div>
               </div>
@@ -130,7 +130,7 @@
                 v-bind:class="[getChampionColor(champ)]"
                 v-on:click="toggle(champ)"
               >
-                <div class="image-wrapper">
+                <div class="image-wrapper" :title="champ.name">
                   <img :src="champ.image" v-bind:class="{'img-with-border': currentSet === 'set2'}" />
                 </div>
               </div>
@@ -143,7 +143,7 @@
               v-bind:class="[getChampionColor(champ)]"
               v-on:click="toggle(champ)"
             >
-              <div class="image-wrapper">
+              <div class="image-wrapper" :title="champ.name">
                 <img :src="champ.image" v-bind:class="{'img-with-border': currentSet === 'set2'}" />
               </div>
             </div>
@@ -158,7 +158,7 @@
                   v-bind:class="[getChampionColor(champ)]"
                   v-on:click="toggle(champ)"
                 >
-                  <div class="image-wrapper">
+                  <div class="image-wrapper" :title="champ.name">
                     <img
                       :src="champ.image"
                       v-bind:class="{'img-with-border': currentSet === 'set2'}"
@@ -226,7 +226,7 @@
                   v-bind:class="[getChampionColor(champ)]"
                   v-on:click="toggle(champ)"
                 >
-                  <div class="image-wrapper">
+                  <div class="image-wrapper" :title="champ.name">
                     <img
                       :src="champ.image"
                       v-bind:class="{'img-with-border': currentSet === 'set2'}"
@@ -243,7 +243,7 @@
                   v-bind:class="[getChampionColor(champ)]"
                   v-on:click="toggle(champ)"
                 >
-                  <div class="image-wrapper">
+                  <div class="image-wrapper" :title="champ.name">
                     <img
                       :src="champ.image"
                       v-bind:class="{'img-with-border': currentSet === 'set2'}"
@@ -260,7 +260,7 @@
                   v-bind:class="[getChampionColor(champ)]"
                   v-on:click="toggle(champ)"
                 >
-                  <div class="image-wrapper">
+                  <div class="image-wrapper" :title="champ.name">
                     <img
                       :src="champ.image"
                       v-bind:class="{'img-with-border': currentSet === 'set2'}"
