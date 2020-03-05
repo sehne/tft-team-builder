@@ -535,7 +535,7 @@ let set = {
         { name: "rebel", type: "origin", bronze: 3, silver: null, gold: 6 },
         { name: "spacePirate", type: "origin", bronze: 2, silver: null, gold: 4 },
         { name: "starGuardian", type: "origin", bronze: 3, silver: null, gold: 6 },
-        { name: "valkyrie", type: "origin", bronze: null, silver: null, gold: 3 },
+        { name: "valkyrie", type: "origin", bronze: null, silver: null, gold: 2 },
         { name: "void", type: "origin", bronze: null, silver: null, gold: 3 },
 
         // classes:
@@ -549,22 +549,11 @@ let set = {
         { name: "mystic", type: "class", bronze: 2, silver: null, gold: 4 },
         { name: "protector", type: "class", bronze: 2, silver: null, gold: 4 },
         { name: "sniper", type: "class", bronze: null, silver: null, gold: 2 },
-        { name: "starship", type: "class", bronze: null, silver: null, gold: 1 },
         { name: "sorcerer", type: "class", bronze: 2, silver: 4, gold: 6 },
+        { name: "starship", type: "class", bronze: null, silver: null, gold: 1 },
         { name: "vanguard", type: "class", bronze: 2, silver: null, gold: 4 },
     ],
     comps: [
-        // [
-        //     'rekSai',
-        //     'yasuo',
-        //     'nocturne',
-        //     'qiyanaCloud',
-        //     'sivir',
-        //     'janna',
-        //     'khaZix',
-        //     'masterYi',
-        //     'bladeOfTheRuinedKing',
-        // ],
 
     ]
 }
